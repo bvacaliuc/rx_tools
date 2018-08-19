@@ -1,0 +1,12 @@
+# Downloaded FFTW files
+fftw-*.zip
+fftw-*.zip
+
+# Extracted FFTW files
+x64
+x86
+
+# Build artifacts
+CMakeFiles
+*.cmake
+INSTALL.*
