@@ -101,8 +101,8 @@ target_link_libraries(rx_power ${RX_TOOLS_LIBS})
 add_executable(rx_sdr src/rtl_sdr.c)
 target_link_libraries(rx_sdr ${RX_TOOLS_LIBS})
 
-#add_executable(rx_rss src/rtl_rss.c)
-#target_link_libraries(rx_rss ${RX_TOOLS_LIBS})
+add_executable(rx_rss src/rtl_rss.c)
+target_link_libraries(rx_rss ${RX_TOOLS_LIBS})
 
 # Handle linking and post-build steps
 IF(WIN32)
@@ -110,14 +110,14 @@ IF(WIN32)
     # http://stackoverflow.com/questions/7988297/cmake-to-add-vs2010-project-custom-build-events
     IF(CMAKE_CXX_COMPILER_ID MATCHES "MSVC" OR MINGW)
         MESSAGE( STATUS "FFTW_DLL=${FFTW_DLL}" )
-        #add_custom_command(TARGET rx_rss
-        #                   POST_BUILD
-        #                   COMMAND ${CMAKE_COMMAND} -E copy "${FFTW_DLL}" \$\(OutDir\)
-        #                   COMMENT "Copy ${FFTW_DLL} to OutDir")
+        add_custom_command(TARGET rx_rss
+                           POST_BUILD
+                           COMMAND ${CMAKE_COMMAND} -E copy "${FFTW_DLL}" \$\(OutDir\)
+                           COMMENT "Copy ${FFTW_DLL} to OutDir")
     ENDIF()
 ENDIF()
 
 ########################################################################
 # Install executables
 ########################################################################
-install(TARGETS rx_fm rx_power rx_sdr DESTINATION bin)
+install(TARGETS rx_fm rx_power rx_sdr rx_rss DESTINATION bin)
