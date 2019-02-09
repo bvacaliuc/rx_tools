@@ -1,3 +1,5 @@
+DEVELOPMENT BRANCH for Radio Sky Spectrograph Support
+* currently a work-in-progress
 
 1.0.3 (2016/11/05)
 * Fix sizeof usage for Windows 64 compatibility (closes GH-44)
